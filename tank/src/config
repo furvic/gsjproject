@@ -1,0 +1,11 @@
+#tanks count at initialization
+initTankCount=10
+tankSpeed=5
+bulletSpeed=10
+gameWidth=1080
+gameHeight=720
+#fireStrategy
+goodFS=gsj.tank.strategy.FourDirStrategy
+badFS=gsj.tank.strategy.DefaultFireStrategy
+#colliders
+colliders=gsj.tank.cor.BulletTankCollider,gsj.tank.cor.TankTankCollider
