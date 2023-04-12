@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue-v2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="stu in list">{{stu.sid}}  {{stu.sname}}  {{stu.age}}</li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in student">{{key}} {{value}} {{index}} </li>
+        </ul>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:[{"sid":1001,"sname":"马蓉","age":18},{"sid":1002,"sname":"马苏","age":19},{"sid":1003,"sname":"白百何","age":21}],
+            student:{"id":1,"age":18,"name":"周润发","address":"香港"}
+        }
+
+    })
+</script>
+</html>

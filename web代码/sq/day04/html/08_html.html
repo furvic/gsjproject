@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="01_html.html">吵吵</a><br>
+    <button onclick="fun1()">去下一页</button>
+    <script>
+        console.log(navigator.appName)
+        console.log(navigator.appVersion)//版本
+        console.log(navigator.cookieEnabled)//是否支持cookie
+        function fun1(){
+            history.go(1)
+        }
+    </script>
+</body>
+</html>

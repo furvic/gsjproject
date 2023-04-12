@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>省市联动</title>
+<script>
+	var cities;
+	window.onload = function() {
+		//模拟查询所有的城市
+		cities = [
+			["石家庄","保定","廊坊"],
+			["济南","青岛","烟台"],
+			["杭州","宁波","温州"]
+		];
+	}
+	function chg() {
+		console.log(1);
+		//获取选中的省份
+		var pselect = 
+			document.getElementById("province");
+		console.log(pselect.value);
+		var index = pselect.value;
+		//获取该省份下的城市
+		var pcities = cities[index];
+		//先删除旧的城市
+		var cselect = 
+			document.getElementById("city");
+		//var options = 
+		//	cselect.getElementsByTagName("option");
+		//for(var i=options.length-1;i>0;i--) {
+		//	cselect.removeChild(options[i]);
+		//}
+		cselect.innerHTML = 
+			"<option>请选择</option>";
+		//追加新的城市
+		if(pcities) {
+			for(var i=0;i<pcities.length;i++) {
+				var option = 
+					document.createElement("option");
+				option.innerHTML = pcities[i];
+				cselect.appendChild(option);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	省:
+	<select onchange="chg();"
+		id="province">
+		<option>请选择</option>
+		<option value="0">河北省</option>
+		<option value="1">山东省</option>
+		<option value="2">浙江省</option>
+	</select>
+	市:
+	<select id="city">
+		<option>请选择</option>
+	</select>
+</body>
+</html>
+
+
+
+
+
+
+

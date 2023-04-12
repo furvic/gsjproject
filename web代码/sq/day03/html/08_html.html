@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var uri = "http://www.baidu.com?username=张三";
+        //将字符串编码
+        console.log(encodeURI(uri))
+        //解码某个编码
+        console.log(decodeURI(uri))
+        //将字符串编码为URI组件
+        console.log(encodeURIComponent(uri))
+        //解码一个编码的URI组件
+        console.log(decodeURIComponent(uri))
+        //将字符串对象转为js对象
+        var d = "alert(1111)"
+        eval(d)
+    </script>
+</body>
+</html>

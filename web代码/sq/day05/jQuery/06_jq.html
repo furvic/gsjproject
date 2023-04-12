@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <li>喜欢</li>
+    </ul>
+</body>
+<script>
+    $("div").css("border","1px solid")
+    $("div").css({"width":"200px","height":"200px" ,"background-color":"red"})
+    $("ul").append("<li>victoria</li>")
+    $("ul").prepend("<li>郭淑洁</li>")
+    $("li:eq(0)").after("<li>郭淑洁</li>")
+    $("li:eq(1)").before("<li>最棒</li>")
+
+    $("li:eq(0)").empty()
+    $("li:eq(2)").remove()
+
+    $("li:eq(1)").mouseover(function(){
+        alert(1111)
+    })
+
+    var li = $("li:eq(1)").detach()
+    $("ul").append(li)
+</script>
+</html>

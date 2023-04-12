@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//定义页面加载事件onload,该事件是在
+	//浏览器加载完网页时,由浏览器自动触发的,
+	//触发时调用对应的匿名函数.
+	window.onload = function() {
+		//1.读取节点的名称和类型
+		var p1 = document.getElementById("p1");
+		console.log(p1.nodeName);
+		console.log(p1.nodeType);
+		console.log(document.nodeName);
+		console.log(document.nodeType);
+		//2.读写节点的内容
+		//内容:双标签中间的文本,如<a>达内</a>.
+		//1)innerHTML(内容中的标签有效)
+		var p2 = document.getElementById("p2");
+		console.log(p2.innerHTML);
+		p2.innerHTML = "2.DOM操作包括<u>查询</u>节点";
+		//2)innerText(内容中的标签无效)
+		var p3 = document.getElementById("p3");
+		console.log(p3.innerText);
+		p3.innerText = "3.DOM操作包括<u>增删</u>节点";
+		//3.读写节点的值
+		//值:表单控件有值(label除外)
+		//读: input.value
+		//写: input.value = "abc"
+		//4.读写节点的属性
+		//1)调用方法
+		var img = document.getElementById("i1");
+		console.log(img.getAttribute("src"));
+		img.setAttribute("src","../images/02.jpg");
+		img.removeAttribute("src");
+		//2)调用属性名
+		//id,style,className
+		var a = document.getElementById("a1");
+		console.log(a.style.color);
+		a.style.color = "blue";
+	}
+</script>
+</head>
+<body>
+	<p id="p1">1.DOM操作包括<b>读写</b>节点</p>
+	<p id="p2">2.DOM操作包括<b>查询</b>节点</p>
+	<p id="p3">3.DOM操作包括<b>增删</b>节点</p>
+	<p>
+		<img src="../images/01.jpg" id="i1"/>
+	</p>
+	<p>
+		<a href="#" style="color:red;" id="a1">顶部</a>
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

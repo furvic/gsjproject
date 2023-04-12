@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../js/jquery.validate.js"></script>
+</head>
+<body>
+    <form action="/s1" method="POST" id="f1">
+        <table border="1px solid" width="900px" height="350px" align="center">
+            <tr align="center">
+                <td colspan="2">用户注册</td>
+            </tr>
+            <tr>
+                <td align="right">用户名:</td>
+                <td><input type="text" name="username" ></td>
+            </tr>
+            <tr>
+                <td align="right">密码:</td>
+                <td><input type="password" id="password"  name="password"></td>
+            </tr>
+            <tr>
+                <td align="right">确认密码:</td>
+                <td><input type="password"   name="pwd" ></td>
+            </tr>
+            <tr>
+                <td align="right">Email:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td align="right">出生日期:</td>
+                <td><input type="text"   name="birthday"></td>
+            </tr>
+            <tr align="center">
+                <td colspan="2"><input type="submit" value="注册"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+<script>
+
+        $("#f1").validate({
+            /* 检验规则 */
+            rules:{
+                username:{
+                    required:true
+                },
+                password:{
+                    required:true,
+                    rangelength:[6,16]
+                },
+                pwd:{
+                    required:true,
+                    equalTo:"#password"
+                },
+                email:{
+                    required:true,
+                    email:true
+                },
+                birthday:{
+                    required:true,
+                    dateISO:true
+                }
+            },
+            /* 规则提示 */
+            messages:{
+                username:{
+                    required:"请输入用户名"
+                },
+                password:{
+                    required:"请输入密码",
+                    rangelength:"密码的长度应在6-16之间"
+                },
+                pwd:{
+                    required:"请输入确认密码",
+                    equalTo:"两次输入密码的不一致"
+                },
+                email:{
+                    required:"请输入邮箱",
+                    email:"邮箱不合法"
+                },
+                birthday:{
+                    required:"请输入出生日期",
+                    dateISO:"输入的日期格式应是yyyy-MM-dd"
+                }
+            }
+
+        })
+
+</script>
+</html>

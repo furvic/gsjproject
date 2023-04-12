@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#clock {
+		border: 1px solid red;
+		width: 200px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		font-size: 30px;
+	}
+</style>
+<script>
+	var id;
+	function start() {
+		if(id) {
+			//若id为空,则定时器已启动
+			return;
+		}
+		id = setInterval(function(){
+			//获取当前时间
+			var date = new Date();
+			//将其显示在段落之内
+			var p = 
+				document.getElementById("clock");
+			p.innerHTML = 
+				date.toLocaleTimeString();
+		},1000);
+	}
+	function stop() {
+		clearInterval(id);
+		id = null;
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="开始"
+		onclick="start();"/>
+	<input type="button" value="停止"
+		onclick="stop();"/>
+	<p id="clock"></p>
+</body>
+</html>
+
+
+
+
+
+

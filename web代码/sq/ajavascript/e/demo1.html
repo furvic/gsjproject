@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//这里写js有2种方式:
+	//1.将js代码封装为函数,而函数是在网页
+	//加载完成后,用户点击按钮时调用的,即
+	//这样的js代码是在网页加载后调用的.
+	//2.在此处直接写js,这样的js代码在网页
+	//加载时直接调用,它甚至比body调用的还早.
+	//alert("哈哈");
+	console.log("控制台打印");
+	
+	//1.声明变量
+	var x;
+	console.log(x);
+	x = 8;
+	console.log(x);
+	var y = 9;
+	console.log(y);
+	
+	//2.数据类型
+	var s = "hello";
+	var n = 3.14;
+	var b = true;
+	
+	//3.隐式转换
+	console.log(s+n);
+	console.log(s+b);
+	console.log(n+b);
+	console.log(b+b);
+	
+	//4.强制转换
+	console.log(parseInt("56"));
+	console.log(parseInt(3.14));
+	console.log(parseInt("abc"));
+	console.log(parseInt("")); //NaN
+
+	//5.对数据进行判断
+	console.log(typeof(s));
+	console.log(typeof(n));
+	console.log(typeof(b));
+	console.log(isNaN(56));
+	console.log(isNaN("56"));
+	console.log(isNaN("abc"));
+	console.log(isNaN("")); //false
+	
+	//6.运算符
+	console.log("5"==5);
+	console.log("5"===5);
+	
+	//7.条件表达式
+	//js中任何数据都能做条件,
+	//当采用非布尔值做条件时,
+	//空值相当于false,非空值相当于true.
+	//空值:undefined,NaN,null,0,""
+	//这样设计是为了简化判断逻辑
+	var k = 0;
+	if(k) {
+		console.log("ok");
+	}
+	var w = "";
+	w && console.log("好");
+	
+</script>
+</head>
+<body>
+	<p>在此网页上演示js基本语法</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

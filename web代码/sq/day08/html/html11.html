@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../element-ui-2.13.0/lib/theme-chalk/index.css">
+    <script src="../js/vue-v2.6.10.js"></script>
+    <script src="../element-ui-2.13.0/lib/index.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <!-- Table -->
+        <el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
+
+        <el-dialog title="收货地址" :visible.sync="dialogTableVisible">
+        <el-table :data="gridData">
+            <el-table-column property="date" label="日期" width="150"></el-table-column>
+            <el-table-column property="name" label="姓名" width="200"></el-table-column>
+            <el-table-column property="address" label="地址"></el-table-column>
+        </el-table>
+        </el-dialog>
+
+        <el-button type="success" icon="el-icon-check" circle  @click="dialogTableVisible1 = true"></el-button>
+          <el-dialog title="收货地址" :visible.sync="dialogTableVisible1"  :before-close="handleClose">
+            <el-radio-group v-model="labelPosition" size="small">
+                <el-radio-button label="left">左对齐</el-radio-button>
+                <el-radio-button label="right">右对齐</el-radio-button>
+                <el-radio-button label="top">顶部对齐</el-radio-button>
+              </el-radio-group>
+              <div style="margin: 20px;"></div>
+              <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+                <el-form-item label="名称">
+                  <el-input v-model="formLabelAlign.name"></el-input>
+                </el-form-item>
+                <el-form-item label="活动区域">
+                  <el-input v-model="formLabelAlign.region"></el-input>
+                </el-form-item>
+                <el-form-item label="活动形式">
+                  <el-input v-model="formLabelAlign.type"></el-input>
+                </el-form-item>
+              </el-form>
+          </el-dialog>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            gridData: [{
+                date: '2016-05-02',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1518 弄'
+            }],
+            dialogTableVisible: false,
+            dialogTableVisible1:false,
+            labelPosition: 'right',
+            formLabelAlign: {
+                name: '',
+                region: '',
+                type: ''     
+            }
+            
+    },
+    methods: {
+                handleClose(done) {
+                    this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => {});
+                    }
+                }    
+    })
+</script>
+</html>

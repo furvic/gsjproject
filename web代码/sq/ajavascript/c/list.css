@@ -1,0 +1,200 @@
+/*0.对网页样式做出统一的处理*/
+/*星是通用选择器,可以选中一切元素*/
+* {
+	padding: 0;
+	margin: 0;
+}
+
+/*1.对页面进行布局,设置每个区域的尺寸和位置*/
+div {
+	border: 1px solid red;
+	margin: 0 auto;
+}
+.logo {
+	width: 960px;
+	height: 61px;
+}
+.menu {
+	height: 91px;
+}
+.core {
+	height: 410px;
+	/*预留出放渐变条的空间*/
+	padding-top: 10px;
+}
+.copy {
+	width: 960px;
+	height: 50px;
+}
+.content {
+	width: 950px;
+	height: 390px;
+	border: 5px solid #8ac1db;
+}
+.content>div {
+	width: 910px;
+	height: 40px;
+}
+.content>.data {
+	height: 310px;
+}
+
+/*2.给各个区域设置背景*/
+body {
+	background-color: #0EA8D8;
+}
+.logo {
+	background-image:
+		url(../img/top_bg.png);
+}
+.menu {
+	background-color: #0488BB;
+}
+.core {
+	background:
+		url(../img/content_bg.png)
+		repeat-x top;
+}
+.content {
+	background-color: #E8F3F8;
+}
+
+/*3.设置文本样式*/
+body {
+	font-family:
+		"微软雅黑","文泉驿正黑","黑体";
+	font-size: 14px;
+}
+.logo {
+	text-align: right;
+	line-height: 61px;
+}
+.logo>a {
+	margin-right: 40px;
+	color: #FFF;
+	text-decoration: none;
+}
+.logo>a:hover {
+	font-weight: bold;
+}
+.copy>p {
+	text-align: center;
+	color: #FFF;
+	height: 25px;
+	line-height: 25px;
+}
+
+/*4.设置数据区表格样式*/
+.data>table {
+	border: 1px solid #ccc;
+	width: 100%;
+	/*边框合并的属性必须写在table之上*/
+	border-collapse: collapse;
+}
+.data td {
+	border: 1px solid #ccc;
+	text-align: center;
+}
+.data thead tr {
+	background-color: #fbedce;
+	height: 40px;
+	font-weight: bold;
+}
+.data tbody tr {
+	background-color: #FFF;
+	height: 32px;
+}
+.data tbody tr:hover {
+	background-color: #f7f9fd;
+}
+.modify {
+	padding-left: 15px;
+	background:
+		url(../img/modification.png)
+		no-repeat left;
+	border: 0;
+	/*鼠标变为手型*/
+	cursor: pointer;
+}
+
+/*5.定位logo区的图片以及内容区的提示框*/
+.logo>img {
+	float: left;
+}
+.content {
+	position: relative;
+}
+.content>.msg {
+	position: absolute;
+	left: 250px;
+	top: 120px;
+	width: 450px;
+	height: 80px;
+}
+.msg>img {
+	float: right;
+	margin: 5px;
+	cursor: pointer;
+}
+.msg>p {
+	line-height: 80px;
+	margin-left: 38px;
+}
+.msg {
+	border: 1px solid #F68A8A;
+	background: #FDECEC
+		url(../img/ok.png)
+		no-repeat 10px 32.5px;
+}
+
+/*6.设置菜单区各图标的样式*/
+.menu>ul {
+	width: 960px;
+	height: 91px;
+	margin: 0 auto;
+	border: 1px solid yellow;
+	list-style-type: none;
+}
+.menu li {
+	width: 68px;
+	height: 77px;
+	margin: 7px 14px;
+	border: 1px solid yellow;
+	float: left;
+	cursor: pointer;
+}
+#index {
+	background-image:
+		url(../img/index_out.png);
+}
+#index:hover {
+	background-image:
+		url(../img/index_on.png);
+}
+#role {
+	background-image:
+		url(../img/role_out.png);
+}
+#role:hover {
+	background-image:
+		url(../img/role_on.png);
+}
+
+/*收尾:去掉开发过程中用于调试的边框*/
+div,.menu>ul,.menu li {
+	border: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

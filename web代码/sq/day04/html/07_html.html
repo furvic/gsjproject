@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        #ball{
+            width: 75px;
+            height: 75px;
+            /* 设置圆角 */
+            border-radius: 80%;
+            /* 设置背景色 */
+            background-color: rgb(30,144,255);
+        }
+</style>
+</head>
+<body>
+    <div id="ball"></div>
+</body>
+<script>
+    var width = screen.availWidth
+    var index = 1
+    function toRight(){
+        var ball = document.getElementById("ball")
+        ball.style.marginLeft = index + "px"
+        index++
+        if(index == width - 75){
+            setTimeout(toLeft,1)
+        }else{
+            setTimeout(toRight,1)
+        }
+    }
+    function toLeft(){
+        var ball = document.getElementById("ball")
+        ball.style.marginLeft = index + "px"
+        index--
+        if(index <= 0){
+            setTimeout(toRight,1)
+        }else{
+            setTimeout(toLeft,1)
+        }
+    }
+    //设置一个开始导火索
+    toRight()
+</script>
+</html>

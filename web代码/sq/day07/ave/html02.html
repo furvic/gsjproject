@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue-v2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-text = "c1"></p>
+        <p v-html = "c2"></p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            c1:"安之若素",
+            c2:"<font color = 'red'>mwgjshs</font>"
+        }
+    })
+</script>
+</html>

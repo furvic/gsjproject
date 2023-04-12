@@ -1,0 +1,65 @@
+②、案例:时钟显示
+代码示例:
+案例代码：
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1{
+            color: rgb(255,192,203);
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+
+    </div>
+    <button onclick="stopTime()">停止计时</button>
+    <button onclick="startTime()">开始计时</button>
+</body>
+<script>
+    /* 
+        1、做一个函数:往div中写最新的日期
+        2、使用循环定时器每个1秒调用一次函数
+    */
+    function writeDate(){
+       //创建日期对象
+       var d= new Date()
+       //获取小时
+       var hours= d.getHours()<=9?"0"+d.getHours():d.getHours()
+       //获取分钟
+       var minutes= d.getMinutes()<=9?"0"+d.getMinutes():d.getMinutes()
+       //获取秒数
+       var seconds =d.getSeconds()<=9?"0"+d.getSeconds():d.getSeconds()
+       //拼接日期字符串
+       var time =hours+":"+minutes+":"+seconds
+       //获取div
+       /* document.getElementById("d1").innerHTML="<font color='red' size='5'>当前时间:"+time+"</font>" */
+       document.getElementById("d1").innerText="当前时间:"+time;
+    }
+    /* t:代表定时器对象 */
+    var t=null;
+    //开始计时
+    function startTime(){
+        if(t!=null){
+            //关闭
+            clearInterval(t)
+        }
+        //循环定时器
+       t= setInterval(writeDate,1000)
+    }
+    //停止计时
+    function stopTime(){
+        //关闭循环定时器
+        clearInterval(t)
+        //关闭单次定时器
+        /* clearTimeout() */
+    }
+
+</script>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//2.Number对象
+	var n = 3.1415926;
+	console.log(n.toFixed(3));
+	
+	//3.Array对象
+	//理解:js中的数组都是Object数组
+	//1)如何创建数组对象
+	//已知要存入哪些数据
+	var a1 = ["zhangsan",25,false];
+	console.log(a1[0]);
+	//不知要存入哪些数据
+	var a2 = new Array();
+	a2.push("lisi");
+	a2.push(30);
+	a2.push(true);
+	console.log(a2[0]);
+	//结论:无论采用哪种方式所创建的数组,
+	//本质上都一样,都是Object数组.
+	//2)数组倒转
+	var arr = [6,1,8,12,5,7,3];
+	arr.reverse();
+	console.log(arr);
+	//3)数组排序
+	arr.sort();
+	console.log(arr);
+	arr.sort(function(a,b){
+		return a-b;
+	});
+	console.log(arr);
+	
+	//5.Date对象
+	//创建日期对象
+	var d1 = new Date();
+	var d2 = new Date("2017/08/01 09:09:09");
+	console.log(d1);
+	console.log(d2);
+	//转化为本地格式的字符串
+	console.log(d2.toLocaleDateString());
+	console.log(d2.toLocaleTimeString());
+	//读写时间分量(部位)
+	var y = d2.getFullYear();
+	var m = d2.getMonth()+1; //月份从0开始
+	var d = d2.getDate();
+	var today = y + "年" + m + "月" + d + "日";
+	console.log(today);
+	
+	//6.RegExp对象
+	//1)如何创建正则对象
+	var str = "you can you up,no can no bb.";
+	var reg = /no/;
+	//2)test方法
+	//检测字符串内是否包含与正则匹配的子串
+	console.log(reg.test(str));
+	//3)exec方法
+	//普通模式
+	//检测字符串内第1个和正则匹配的子串
+	console.log(reg.exec(str));
+	//全局模式
+	//第N次调用,则检测字符串内第N个和正则匹配的子串
+	reg = /no/g;
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	console.log(reg.exec(str));
+	
+	//7.Function对象
+	function sum() {
+		var s = 0;
+		if(arguments.length) {
+			for(var i=0;i<arguments.length;i++) {
+				s += arguments[i];
+			}
+		}
+		return s;
+	}
+	console.log(sum(3,4,5));
+	console.log(sum(3,4,5,6,7));
+	
+</script>
+</head>
+<body>
+	<p>内置对象</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

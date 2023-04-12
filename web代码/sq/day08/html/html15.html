@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <link rel="stylesheet" href="../element-ui-2.13.0/lib/theme-chalk/index.css">
+ <script src="../js/vue-v2.6.10.js"></script>
+ <script src="../element-ui-2.13.0/lib/index.js"></script>
+ <script src="../js/axios-0.18.0.js"></script>
+</head>
+<body>
+ <div id="app">
+
+     <el-form :model="ruleForm" :rules="rules" ref="ruleForm1" label-width="100px" class="demo-ruleForm">
+         <el-form-item label="姓名" prop="name">
+           <el-input v-model="ruleForm.name"></el-input>
+         </el-form-item>
+
+         <el-form-item label="性别" prop="sex">
+             <el-radio-group v-model="ruleForm.sex">
+               <el-radio label="男"></el-radio>
+               <el-radio label="女"></el-radio>
+             </el-radio-group>
+           </el-form-item>
+
+
+           <el-form-item label="爱好" prop="hobby">
+             <el-checkbox-group v-model="ruleForm.hobby">
+               <el-checkbox label="吹" name="hobby"></el-checkbox>
+               <el-checkbox label="拉" name="hobby"></el-checkbox>
+               <el-checkbox label="弹" name="hobby"></el-checkbox>
+               <el-checkbox label="唱" name="hobby"></el-checkbox>
+             </el-checkbox-group>
+           </el-form-item>
+
+
+
+         <el-form-item label="出生日期" required>
+           <el-col :span="6">
+             <el-form-item prop="birthday">
+               <el-date-picker type="date" placeholder="请选择出生日期" v-model="ruleForm.birthday" style="width: 100%;"></el-date-picker>
+             </el-form-item>
+           </el-col>
+         </el-form-item>
+
+         <el-form-item label="个人介绍" prop="sdesc">
+             <el-input type="textarea" v-model="ruleForm.sdesc"></el-input>
+           </el-form-item>
+           <el-form-item>
+     <p>
+         <el-upload
+             class="upload-demo"
+             ref="upload"
+             :limit="1"
+             :before-upload="before_upload"
+             :action="action"
+             :on-preview="handlePreview"
+             :on-remove="handleRemove"
+             :on-exceed="handleExceed"
+             :auto-upload="false">
+             <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+             <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+         </el-upload>
+     </p>
+
+     <img :src="ruleForm.src" width="100px">
+
+     <br>
+
+           <el-button type="primary" @click="submitForm('ruleForm1')">立即创建</el-button>
+           <el-button @click="resetForm('ruleForm')">重置</el-button>
+         </el-form-item>
+       </el-form>
+
+ </div>
+</body>
+<script>
+ new Vue({
+     el:"#app",
+     data:{
+         action:"http://localhost:8080/day15/student?method=upload",
+         ruleForm: {
+             name: '',
+             sex: '',
+             hobby: [],
+             birthday: '',
+             sdesc: '',
+             photo:'',
+             src:''
+         },
+         rules: {
+             name: [
+                 { required: true, message: '请输入姓名', trigger: 'blur' },
+                 { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+             ],
+             birthday: [
+                 { type: 'date', required: true, message: '请选择出生日期', trigger: 'change' }
+             ],
+             hobby: [
+                 { type: 'array', required: true, message: '请至少选择一个爱好', trigger: 'change' }
+             ],
+             sex: [
+                 { required: true, message: '请选择性别', trigger: 'change' }
+             ],
+             sdesc: [
+                 { required: true, message: '请填写个人介绍', trigger: 'blur' }
+             ]
+             }
+         },
+         methods:{
+             submitForm(formName) {
+                 //  this.$refs[formName]获取到要校验的表单对象
+                 // validate()校验方法  valid:校验方法的返回值
+                 this.$refs[formName].validate((valid) => {
+                 if (valid) {
+                     //表单校验通过
+                      var params=   new URLSearchParams()
+                     params.append("name",this.ruleForm.name)
+                     params.append("sex",this.ruleForm.sex)
+                     params.append("hobby",this.ruleForm.hobby)
+                     params.append("birthday",this.ruleForm.birthday)
+                     params.append("sdesc",this.ruleForm.sdesc)
+                     params.append("photo",this.ruleForm.photo)
+                     //发送ajax
+                     axios({
+                         url:"http://localhost:8080/day15/student?method=insertStu",
+                         data:params,
+                         method:"post"
+                     }).then(resp=>{
+                         //做成功后的处理
+                     })
+
+                 } else {
+                     //表单校验未通过
+                     this.$message.warning(`请检查表单项`)
+                     return false;
+                 }
+                 });
+             },
+             resetForm(formName) {
+                 this.$refs[formName].resetFields();
+             },
+             /* 上传组件的方法 */
+             /* 文件上传 */
+             submitUpload() {
+                 this.$refs.upload.submit();
+             },
+             //文件上传前要执行的函数
+             before_upload(file){
+                //file:上传的文件资源
+
+                //创建请求体 将文件资源携带进去
+                 var params =new FormData()
+                 params.append("fileName",file)
+
+                 axios({
+                     url:this.action,
+                     data:params,
+                     method:"post"
+                 }).then(resp=>{
+                     //消息提示
+                   this.$message.success(resp.data.message)  
+                   //获取响应返回值内容
+                   this.ruleForm.photo= resp.data.obj
+                   this.ruleForm.src="http://localhost:8080/img/"+resp.data.obj
+                 })
+             },
+
+                 /* 文件移除 */
+                 handleRemove(file, fileList) {
+                     console.log(file, fileList);
+                 },
+                 /* 文件预览 */
+                 handlePreview(file) {
+                     console.log(file);
+                 },
+                 /* 文件超出 */
+                 handleExceed(files, fileList) {
+                   this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+                 },
+         }
+
+ })
+
+</script>
+</html>

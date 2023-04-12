@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: orchid;
+            /* 隐藏 */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    </div>
+    <button>点点</button>
+    <input type="button" value="淡入">
+    <input type="button" value="淡出">
+    <input type="button" value="切换">
+    <input type="button" value="滑入">
+    <input type="button" value="滑出">
+    <input type="button" value="切换1">
+</body>
+<script>
+    $("button").click(function(){
+        //重定向
+        location.href="http://www.baidu.com"
+    })
+    $("input[value='淡入']").click(function(){
+        $("div").fadeIn(4000)
+    })
+    $("[value='淡出']").click(function(){
+        $("div").fadeOut(4000)
+    })
+    $("[value='切换']").click(function(){
+        $("div").fadeToggle(4000)
+    })
+
+    $("input[value='滑入']").click(function(){
+        $("div").slideDown(4000)
+    })
+    $("[value='滑出']").click(function(){
+        $("div").slideUp(4000)
+    })
+    $("[value='切换1']").click(function(){
+        $("div").slideToggle(4000)
+    })
+</script>
+</html>

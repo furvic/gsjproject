@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../element-ui-2.13.0/lib/theme-chalk/index.css">
+    <script src="../js/vue-v2.6.10.js"></script>
+    <script src="../element-ui-2.13.0/lib/index.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <template>
+            <el-table
+              :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+              style="width: 100%">
+              <el-table-column
+                type="selection"
+                width="55">
+              </el-table-column>
+              <el-table-column
+                label="学号"
+                prop="sid">
+              </el-table-column>
+              <el-table-column
+                label="姓名"
+                prop="name">
+              </el-table-column>
+              <el-table-column
+                label="头像">
+                <template slot-scope="scope">
+                    <img :src="`http://localhost:8080/img/${scope.row.photo}`" style="width: 100px;">
+                </template>
+              </el-table-column>
+              <el-table-column
+                label="性别"
+                prop="sex">
+              </el-table-column>
+              <el-table-column
+                label="生日"
+                prop="birthday">
+              </el-table-column>
+              <el-table-column
+                label="爱好"
+                prop="hobby">
+              </el-table-column>
+              <el-table-column
+                align="right">
+                <template slot="header" slot-scope="scope">
+                  <el-input
+                    v-model="search"
+                    size="mini"
+                    placeholder="输入关键字搜索"/>
+                </template>
+                <template slot-scope="scope">
+                  <el-button
+                    size="mini"
+                    @click="handleEdit(scope.$index, scope.row)">修改</el-button>
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+              </el-table-column>
+            </el-table>
+          </template>
+          <div class="block">
+            <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="currentPage"
+              :page-sizes="[3, 4, 5, 6]"
+              :page-size="pageSize"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="totalCount">
+            </el-pagination>
+          </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            tableData: [],
+            search: '',
+            currentPage: 1,
+            pageSize:3,
+            totalCount:''
+        },
+        methods:{
+            findAll(){
+                var params = new URLSearchParams()
+                params.append("currentPage",this.currentPage)
+                params.append("pageSize",this.pageSize)
+                axios({
+                    url:"http://localhost:8080/day15/student?method=findPages1",
+                    method:"post",
+                    data:params
+                }).then(resp=>{
+                    this.tableData=resp.data.list
+                    this.currentPage=resp.data.currentPage
+                    this.pageSize=resp.data.pageSize
+                    this.totalCount=resp.data.totalCount    
+                })
+            },
+            handleSizeChange(val) {
+                 this.pageSize=val
+                 this.findAll()
+            },
+            handleCurrentChange(val) {
+                this.currentPage=val
+                this.findAll()
+            }
+        },
+        created() {
+            this.findAll()
+        }
+    })
+</script>
+</html>

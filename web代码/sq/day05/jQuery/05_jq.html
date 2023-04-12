@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <style>
+        .header{
+            background-color: orange;
+        }
+        .even{
+            background-color: rgb(163, 150, 150);
+        }
+        .add{
+            background-color: white;
+        }
+        .hover{
+            background-color: turquoise;
+        }
+    </style>
+</head>
+<body>
+    <table width="700px" height="300px" border="1px" cellspacing="0px" cellspadding="7px" align="center">
+        <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>地址</th>
+        </tr>
+        <tr>
+            <td>1001</td>
+            <td>达美乐</td>
+            <td>23</td>
+            <td>中国</td>
+        </tr>
+        <tr>
+            <td>1002</td>
+            <td>美惠子</td>
+            <td>17</td>
+            <td>日本</td>
+        </tr>
+        <tr>
+            <td>1003</td>
+            <td>李宝英</td>
+            <td>33</td>
+            <td>韩国</td>
+        </tr>
+        <tr>
+            <td>1004</td>
+            <td>托夫斯基</td>
+            <td>21</td>
+            <td>俄罗斯</td>
+        </tr>
+       
+    </table>
+</body>
+<script>
+    $("tr:first").addClass("header")
+    $("tr:gt(0):even").addClass("even")
+    $("tr:gt(0):odd").addClass("odd")
+    $("tr:gt(0)").mouseover(function(){
+        $(this).addClass("hover")
+    })
+    $("tr:gt(0)").mouseout(function(){
+        $(this).removeClass("hover")
+    })
+</script>
+</html>

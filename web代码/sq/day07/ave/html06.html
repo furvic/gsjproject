@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue-v2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-bind:style = "s"></div>
+        <img v-bind:src="sr" v-bind:width="w" v-bind:height="h" ><br>
+        <a v-bind:href="h">百度</a>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            w:"100px",
+            h:"100px",
+            b:"1px solid",
+            sr:"../img/9.jpg",
+            h:"http://www.baidu.com",
+            s:"width:100px;height:100px;border:1px solid;background-color:red"
+        }
+
+    })
+</script>
+</html>

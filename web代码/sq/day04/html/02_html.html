@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fun1()">关闭窗口</button>
+    <script>
+       var op =  open("day04/html/01_html.html ",'_brank','width=300,height=300')
+       function fun1(){
+           op.close()
+       }
+   </script>
+   <!-- <button onclick="fun1()">关闭窗口</button>
+   <script>
+       /* op:表示你开启的窗口对象 
+             参数1:地址:可以是外部的http://www.baidu.com 也可以是本地的  01_BOM弹框.html
+             参数2:打开方式
+             参数3:窗口尺寸
+       */
+      var op= open("01_BOM弹框.html",'_brank','width=600,height=400')
+
+     function fun1(){
+         /* 关闭窗口 */
+         op.close()
+     }
+   </script> -->
+</body>
+
+</html>

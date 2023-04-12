@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <select id="province" onchange="fun1(this.value)">
+        <option value="-1">--请选择--</option>
+        <option value="0">河南</option>
+        <option value="1">河北</option>
+        <option value="2">山东</option>
+    </select>省
+    <select id="city">
+        <option value="1">--选择市</option>
+
+    </select>
+</body>
+<script>
+    var citys = new Array()
+    citys[0]=["濮阳","安阳","许昌","新乡"]
+    citys[1]=["邯郸","石家庄","廊坊","承德"]
+    citys[2]=["青岛","济南","日照","寿光"]
+
+    function fun1(value){
+        $("#city").html("<option>--请选择市--</option>")
+       var arr = citys[value]
+       $.each(arr,function(index,c){
+            $("#city").append("<option>" + c +"</option>")
+       })
+    }
+</script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//确认框
+	function f1() {
+		var b = confirm("你吃了吗?");
+		console.log(b);
+	}
+	//反馈框
+	function f2() {
+		var a = prompt("你吃的什么?");
+		console.log(a);
+	}
+	//周期性定时器
+	function f3() {
+		//启动周期性定时器,让浏览器每隔
+		//1000毫秒,调用一次匿名函数.
+		//该方法会返回定时器的ID,此ID
+		//用于停止定时器.
+		var n = 5;
+		var id = setInterval(function(){
+			console.log(n--);
+			if(n==0) {
+				clearInterval(id);
+				console.log("BOOM");
+			}
+		},1000);
+		//启动定时器相当于启动了支线程,
+		//而当前方法f2相当于主线程,二者
+		//并发执行.所有浏览器在启动定时器
+		//后立刻输出了DUANG,并且在1秒之后
+		//才第一次调用定时器.
+		console.log("DUANG");
+	}
+	//一次性定时器
+	var id;
+	function f4() {
+		//启动一次性定时器,
+		//在10000毫秒之后调用匿名函数,
+		//调用一次后它会自动停止.
+		id = setTimeout(function(){
+			console.log("嘀嘀嘀");
+		},10000);
+	}
+	//取消一次性定时器
+	function f5() {
+		clearTimeout(id);
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="按钮1"
+		onclick="f1();"/>
+	<input type="button" value="按钮2"
+		onclick="f2();"/>
+	<input type="button" value="倒数"
+		onclick="f3();"/>
+	<input type="button" value="计时器"
+		onclick="f4();"/>
+	<input type="button" value="取消"
+		onclick="f5();"/>
+</body>
+</html>
+
+
+
+
+
+
+
+

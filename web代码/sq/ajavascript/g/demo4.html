@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+		border: 1px solid #ccc;
+		width: 218px;
+		height: 218px;
+		margin: 30px auto;
+	}
+	.hide {
+		display: none;
+	}
+</style>
+<script>
+	//页面加载后
+	window.onload = function() {
+		start();
+	}
+	
+	var id;
+	var n = 0;
+	function start() {
+		//启动定时器,间隔为2秒
+		id = setInterval(function(){
+			n++;
+			//获取所有图片
+			var imgs = 
+				document.getElementsByTagName("img");
+			//将他们都隐藏
+			for(var i=0;i<imgs.length;i++) {
+				imgs[i].className = "hide";
+			}
+			//找出下一个图片
+			var next = n % imgs.length;
+			//将这个图片显示
+			imgs[next].className = "";
+		},2000);
+	}
+	function stop() {
+		clearInterval(id);
+	}
+</script>
+</head>
+<body>
+	<!-- 
+		hover:伪类选择器.
+		onmouseover:鼠标悬停事件.
+		onmouseout:鼠标离开事件.
+	 -->
+	<div onmouseover="stop();"
+		onmouseout="start();">
+		<img src="../images/01.jpg"/>
+		<img src="../images/02.jpg" class="hide"/>
+		<img src="../images/03.jpg" class="hide"/>
+		<img src="../images/04.jpg" class="hide"/>
+		<img src="../images/05.jpg" class="hide"/>
+		<img src="../images/06.jpg" class="hide"/>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

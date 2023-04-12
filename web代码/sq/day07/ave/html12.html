@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/axios-0.18.0.js"></script>
+    <script src="../js/vue-v2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <table v-bind:width="w" :border="b" :cellspacing="c1" :cellspadding="c1" :align="ali">
+            <tr>
+                <th><input type="checkbox" name="all">全选/全不选</th>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>头像</th>
+                <th>性别</th>
+                <th>生日</th>
+                <th>爱好</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="stu in list" >
+                <td><input type="checkbox" name="checkbox"></td>
+                <td>{{stu.sid}}</td>
+                <td>{{stu.name}}</td>
+                <td><img :src="`http://localhost:8080/day15/img/${stu.photo}`" :width="w1"></td>
+                <td>{{stu.sex}}</td>
+                <td>{{stu.birthday}}</td>
+                <td>{{stu.hobby}}</td>
+                <td>
+                    <a :href="#">修改</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:'',
+            w:"1200px",
+            b:"1px solid",
+            c1:"0px",
+            c2:"7px",
+            ali:"center",
+            w1:"100px",
+        },
+        methods:{
+            findAll(){
+                var params = new URLSearchParams()
+                params.append("currentPage",1)
+                params.append("pageSize",50)
+                axios.post("http://localhost:8080/day15/student?method=findPages1",
+                            params).then(resp=>{
+                                console.log(resp.data)
+                                this.list = resp.data.list
+                            })
+            }
+        },
+        created(){
+            this.findAll()
+        }
+    })
+</script>
+</html>

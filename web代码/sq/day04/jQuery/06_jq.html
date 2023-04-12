@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <input type="checkbox" name="hobby" value="坑">坑
+    <input type="checkbox" checked name="hobby" value="蒙">蒙
+    <input type="checkbox" name="hobby" value="拐">拐
+    <input type="checkbox" name="hobby" value="骗">骗 <br>
+    <h1>德玛西亚</h1>
+    <h2>来了森到一旁运动去吧</h2>
+        <!-- 
+            :header 获取所有的标题
+            :first 获取第一个
+            :last  获取最后一个
+            :even  获取偶数行
+            :odd   获取奇数行
+            :lt(索引) 获取小于xx索引所有行
+            :gt(索引) 获取大于xx索引的所有行
+            :eq(索引) 获取等于xx索引的行数
+            input:not:(:checked) 获取页面中没被选中的标签
+         -->
+          <!-- 
+        
+     -->
+    用户名: <input type="text" name="username" disabled><br>
+    密码: <input type="password" name="username" disabled><br>
+    性别:<input type="radio" name="sex" value="男">男<br>
+    爱好:
+        <input type="checkbox" name="hobby" value="洗脚">洗脚
+        <input type="checkbox" name="hobby" checked value="spa">spa
+        <input type="checkbox" name="hobby" checked value="沐浴">沐浴
+        <input type="checkbox" name="hobby" value="捶背">捶背
+     <br>
+     我正在<select>
+         <option value="正在泡妞">正在泡妞</option>
+         <option value="正在推塔" selected>正在推塔</option>
+         <option value="正在学习">正在学习</option>
+     </select>
+</body>
+<script>
+    // :disabled  获取当前页面中未激活的元素
+    //     :enabled   获取当前页面中已激活的元素（不包含表单之外的元素）
+    //     ***:checked    获取当前页面中被选中的复选框
+    //     ***:selected   获取当前页面中被选中的下拉框
+    console.log($(":disabled"))
+    console.log($(":enabled"))
+    console.log($(":checked"))
+    console.log($(":selected"))
+
+
+
+
+
+    console.log($(":first"))
+    console.log($(":last"))
+    console.log($("input:first "))
+    console.log($(":even"))
+    console.log($("input:even"))
+    console.log($("input:odd"))
+
+    console.log($(":lt(5)"))
+    console.log($(":gt(0)"))
+
+    console.log($("input:eq(0)"))
+    console.log($("input:not(:checked)"))
+    //console.log($("input:(:checked)"))
+
+
+</script>
+</html>

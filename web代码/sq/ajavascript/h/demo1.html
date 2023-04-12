@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function f1() {
+		//创建一个li
+		var li = document.createElement("li");
+		li.innerHTML = "天津";
+		//将其追加到ul下
+		var ul = document.getElementById("city");
+		ul.appendChild(li);
+	}
+	function f2() {
+		var li = document.createElement("li");
+		li.innerHTML = "南京";
+		var ul = document.getElementById("city");
+		var gz = document.getElementById("gz");
+		ul.insertBefore(li,gz);
+	}
+	function f3() {
+		var ul = document.getElementById("city");
+		var gz = document.getElementById("gz");
+		ul.removeChild(gz);
+	}
+</script>
+</head>
+<body>
+	<ul id="city">
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>杭州</li>
+	</ul>
+	<p>
+		<input type="button" value="追加"
+			onclick="f1();"/>
+		<input type="button" value="插入"
+			onclick="f2();"/>
+		<input type="button" value="删除"
+			onclick="f3();"/>
+	</p>
+</body>
+</html>
+
+
+
+
+
+
+
+

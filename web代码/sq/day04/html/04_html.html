@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1{
+            color: rgb(255,192,203);
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1"></div>
+    <button onclick="stopTime()">停止计时</button>
+    <button onclick="startTime()">开始计时</button>
+</body>
+<script>
+    function wirteTime(){
+        var d = new Date()
+        console.log(d)
+        var h = d.getHours()<=9? "0"+d.getHours() :d.getHours()
+        console.log(d)
+        var m = d.getMinutes() <=9 ? "0"+d.getMinutes() : d.getMinutes()
+        console.log(d)
+        var s = d.getSeconds() <= 9 ? "0"+d.getSeconds() : d.getSeconds()
+        console.log(d)
+        var time = h +":"+ m +":"+s
+        console.log(time)
+        document.getElementById("d1").innerText = "当前时间:"+time
+    }
+    var t = null
+    function startTime(){
+        if(t != null){
+            clearInterval(t)
+        }
+        t = setInterval(wirteTime,1000)
+    }
+    function stopTime(){
+        clearInterval(t)
+    }
+    wirteTime()
+</script>
+</html>

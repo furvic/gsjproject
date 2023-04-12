@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="../img/4.jpg"width="500px" height="500px" alt="">
+</body>
+<script>
+    var index = 4
+    function changeS(){
+        var img = document.getElementsByTagName("img")[0]
+        img.src = "../img/"+index + ".jpg"
+        index++
+        if(index == 16){
+            index = 4
+        }
+    }
+    var t = setInterval(changeS,100)
+    console.log(t)//返回定时器的对象
+</script>
+</html>

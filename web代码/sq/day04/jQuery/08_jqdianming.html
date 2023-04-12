@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1{
+            /* 绝对定位 */
+             position: absolute;
+             top: 100px;
+             left: 800px;
+        }
+        #d2{
+            width: 500px;
+            height: 350px;
+            border: 1px solid;
+            position: absolute;
+            top: 200px;
+            left: 700px;
+            /* 背景图片 */
+            background-image: url(../img/7.jpg);
+            /* 背景偏移 */
+            background-position: -80px -50px;
+        }
+        #name{
+            width: 200px;
+            height: 100px;
+            /* 相对定位 */
+            position: relative;
+            left: 150px;
+            top: 150px;
+            /* 字体颜色 */
+            color: salmon;
+            font-size: 32px;
+            /* 文本居中 */
+            text-align: center;
+            /* 行高 */
+            line-height: 80px;
+        }
+        #d3{
+            position: absolute;
+            top: 600px;
+            left: 700px;
+
+        }
+        .btn{
+            width: 120px;
+            height: 30px;
+            border: 1px solid;
+            /* 设置 圆角 */
+            border-radius: 15px;
+            /* 添加背景色 */
+            background-color:saddlebrown;
+            /* 文本对齐 */
+            text-align: center;
+            /* 设置行高 */
+            line-height: 30px;
+            /* 转换为行内块元素 */
+            display: inline-block;
+        }
+        /* 停止按钮的位置 */
+        #s1{
+            position: relative;
+            left: 200px;
+        }
+        /* 开始按钮的位置 */
+        #s2{
+            position: relative;
+            left: 50px;
+        }   
+    </style>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<body style="background-color: rgb(153,217,234);">
+    
+    <div id="d1">
+         <h1>别紧张下一个就是你</h1>
+    </div>
+
+    <div id="d2">
+        <div id="name">
+            "谢元"
+        </div>
+    </div>
+
+    <div id="d3">
+        <div class="btn" id="s2" onclick="start()">开始点名</div>
+        <div class="btn" id="s1" onclick="end()">停止点名</div>
+    </div>
+</body>
+<script>
+    var names=["贺哲", "谢元", "宋振飞", "刘宇辉", "王浩翔", "方伟", "杨景琦", "陈杰", "孟雷", "付顺喜", "乐欢欢", "侯书豪", "米昱玮", "宁增琨", "刘洋", "冯光玲", "宋少鹏", "张中山", "尹鑫", "周志文", "李慧", "张天翊", "崔玉宁", "张继鹏", "耿彪", "潘佳旭", "司云龙", "石英鑫", "闫欣瑞", "陶一铭", "刘进", "宋运虎", "徐健宇", "王瑞", "高海硕", "潘佳伟", "由大山", "宁浩", "王冠卓", "何高禹", "张堰强", "武明杰", "刘杰", "董小超", "郭淑洁", "武贤亮", "闫少潭", "陈典珲", "陈鹏", "史卓新", "武凯力", "张浩然", "李浩翔", "李飞宇"]
+
+    //做一个能够往 id=name的div里面写名称的函数
+    function RandomName(){
+        //产生0-53之间的随机数
+        var num =Math.floor(Math.random()*names.length)
+        //随机产生的人员名称
+        var name =names[num]
+        //jQuery设置文本
+        $("#name").html(name)
+    }
+    var t =null
+    function start(){
+        if(t!=null){
+            //清除循环定时器
+            clearInterval(t)
+        }
+        t= setInterval(RandomName,1)
+    }
+
+    function end(){
+        //清除循环定时器
+        clearInterval(t)
+    }
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1">我是div
+        <p id="p1">多利</p>
+    </div><br>
+    <input type="checkbox" name="hobby" value="吃">吃
+    <input type="checkbox" name="hobby" value="喝">喝
+    <input type="checkbox" name="hobby" value="玩">玩
+    <input type="checkbox" name="hobby" value="乐">乐<br>
+    <input type="text" name="" id=""><br>
+    <span class="s1"></span><p class="s1"></p>
+</body>
+<script>
+    var div = document.getElementById("d1")
+    console.log(div)
+    var inputs = document.getElementsByName("hobby")
+    console.log(inputs)
+    console.log(inputs.length)
+    var ins = document.getElementsByClassName("s1")
+    console.log(ins)
+    console.log(ins.length)
+    var ss = document.getElementsByTagName("input")
+    console.log(ss.length)
+    console.log(ss)
+
+    var img = document.createElement("img")
+    img.src = "../img/5.jpg"
+    var div = document.getElementById("d1")
+    div.appendChild(img)
+
+    var p = document.createElement("p")
+    p.innerText = "我是innerText"
+    div.insertBefore(p,img)
+
+    var p1 = document.createElement(p)
+    p1.innerText = "佩奇"
+    div.replaceChild(p1,document.getElementById("p1"))
+
+    div.style.width ="200px"
+    div.style.height = "200px"
+    div.style.border = "1px solid"
+    
+
+</script>
+</html>

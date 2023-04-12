@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue-v2.6.10.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p v-text = "p1"></p>
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            p1:''
+        },
+        beforeCreate(){
+            console.log("实例创建之前")
+        },
+        created(){
+            this.p1="说谎大王"
+            console.log("实例创建之后")
+        },
+        beforeMount(){
+            console.log("页面加载之前的钩子函数")
+        },
+        mounted(){
+            console.log("页面加载之后的钩子函数")
+        }
+    })
+</script>
+</html>

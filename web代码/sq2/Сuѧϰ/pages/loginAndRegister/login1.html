@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/vue-v2.6.10.js"></script>
+    <script src="../../js/axios-0.18.0.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <ul>
+        <li class="phone" style="color: red;" v-html="msg"></li>
+    </ul>
+        <form action="" id="form">
+            <input type="text" v-model="username" class="username" @focus="fun1() "id="" placeholder="请输入您的username">
+            <input type="password" v-model="pwd" class="pass" @focus="fun1() "id="" placeholder="请输入密码">
+            <div class="loginbtn" style="margin-left: 110px;line-height: 40px;" @click="submitForm()">
+                登陆
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            msg:'',
+            username:'',
+            pwd:''
+        },
+        methods:{
+            fun1(){
+                this.msg=""
+            },
+            submitForm(){
+                if(this.username.trim()==""){
+                    this.msg="please input the username"
+                    return;
+                }
+                if(this.pwd.trim()==""){
+                    this.msg="please input the password"
+                    return;
+                }
+                var params=new URLSearchParams()
+                params.append("username",this.username)
+                params.append("password",this.pwd)
+                axios({
+                    url:"http://localhost/education/login?method?findUserByUsernameAndPassword",
+                    data:params,
+                    method:"post"
+                }).then(resp=>{
+                    if(resp.data.code==200){
+                        alert(resp.data.message)
+                        sessionStorage.setItem("user1",JSON.stringify(resp.data.obj))
+                        setTimeout("location.href='http://192.168.10.88:5501/%D0%A1u%D1%A7%CF%B0/index.html'",1000)
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

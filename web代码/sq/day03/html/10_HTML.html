@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" value="admin"><br>
+    <img src="../img/11.jpg"  id = "img1" width="100px" height="100px"   alt="">
+</body>
+<script>
+    var input = document.getElementsByTagName("input")[0]
+    console.log(input.value)
+
+    input.value="大白兔"
+    console.log(input.value)
+
+    input.setAttribute("value","嫦娥")
+    console.log(input.getAttribute("value"))
+
+    console.log(document.getElementById("img1").getAttribute("src"))
+
+    document.getElementById("img1").setAttribute("src","../img/5.jpg")
+
+</script>
+</html>

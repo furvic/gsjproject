@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    用户名<input type="text" name="username" onfocus="fun1('s1')" onblur="fun2(this.value,'s1','用户不能为空')"><span id="s1"></span><br>
+    密码<input type="text" name="password" onfocus="fun1('s2')" onblur="fun2(this.value,'s2','密码不能为空')"><span id="s2"></span>
+</body>
+<script>
+    function fun1(){
+        document.getElementById("id").innerHTML=""
+    }
+    function fun2(value,id,info){
+
+    }
+</script>
+</html>

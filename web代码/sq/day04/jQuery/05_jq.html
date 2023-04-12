@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <!-- 
+        [href]:获取当前页面中含有href属性的所有元素
+        a[href]:获取a标签中含有href属性的所有元素
+        [href='#'] 获取当页面中含有href属性并且属性值为#的所有元素
+        [href='#'][target='_blank'] 获取当前页面中含有href属性并且属性值为#的并且含有target并且属性值为_blank的元素
+     -->
+
+     <a href="#">点我哦</a><br>
+     <a href="#" target="_blank">点你哦</a><br>
+     <a href="http://www.baidu.com">去百度</a><br>
+     <img src="../img/4.jpg" width="200px" height="200px" alt=""><br>
+    
+     <input type="text" name="username">
+</body>
+<script>
+    console.log($("[href]"))
+    console.log($("[href='#']"))
+    console.log($("a[href='#']"))
+    console.log($("[src]"))
+    console.log($("img[src]"))
+    console.log($("[href='#'][target='_blank']"))
+    console.log($("input[name='username']"))
+
+</script>
+</html>
